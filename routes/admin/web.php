@@ -20,12 +20,11 @@ Route::group([
     Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin','prefix'=>'admin'], function () {
 
         Route::get('/index', 'HomeController@index')->name('admin.index');
+        Route::get('logout','LoginController@logout')->name('admin.logout');
 
         Route::group(['prefix' => 'settings'], function () {
-
             Route::get('shipping-method/{type}', 'SettingsController@editShipping')->name('edit.shipping-methods');
             Route::put('shipping-method/{id}', 'SettingsController@updateShipping')->name('update.shipping-methods');
-
         });
     });
 
