@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('adashboard',function (){
-    return view('layouts.admin.app');
+Route::get('test',function (){
+    return \App\Setting::find(13);
 })->name('admin.dashboard');
