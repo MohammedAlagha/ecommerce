@@ -27,7 +27,7 @@ var Lobibox = Lobibox || {};
         this.$el = null;
 //------------------------------------------------------------------------------
 //-----------------PRIVATE VARIABLES--------------------------------------------
-//------------------------------------------------------------------------------        
+//------------------------------------------------------------------------------
         var me = this;
 //------------------------------------------------------------------------------
 //-----------------PRIVATE FUNCTIONS--------------------------------------------
@@ -59,7 +59,7 @@ var Lobibox = Lobibox || {};
             // Create notification
             var $notify = _createNotify();
             if (me.$options.size === 'mini'){
-                $notify.addClass('notify-mini');
+                $notify.addClass('noty-mini');
             }
 
             if (typeof me.$options.position === 'string'){
@@ -103,8 +103,8 @@ var Lobibox = Lobibox || {};
             } else if (me.$options.size === 'large') {
                 var tabPane = _createTabPane().append($el);
                 var $li = _createTabControl(tabPane.attr('id'));
-                $wrapper.find('.lb-notify-wrapper').append(tabPane);
-                $wrapper.find('.lb-notify-tabs').append($li);
+                $wrapper.find('.lb-noty-wrapper').append(tabPane);
+                $wrapper.find('.lb-noty-tabs').append($li);
                 _activateTab($li);
                 $li.find('>a').click(function () {
                     _activateTab($li);
@@ -112,10 +112,10 @@ var Lobibox = Lobibox || {};
             }
         };
         var _activateTab = function ($li) {
-            $li.closest('.lb-notify-tabs').find('>li').removeClass('active');
+            $li.closest('.lb-noty-tabs').find('>li').removeClass('active');
             $li.addClass('active');
             var $current = $($li.find('>a').attr('href'));
-            $current.closest('.lb-notify-wrapper').find('>.lb-tab-pane').removeClass('active');
+            $current.closest('.lb-noty-wrapper').find('>.lb-tab-pane').removeClass('active');
             $current.addClass('active')
         };
         var _createTabControl = function (tabPaneId) {
@@ -135,7 +135,7 @@ var Lobibox = Lobibox || {};
             })
         };
         var _createNotifyWrapper = function () {
-            var selector = (me.$options.size === 'large' ? '.lobibox-notify-wrapper-large' : '.lobibox-notify-wrapper')
+            var selector = (me.$options.size === 'large' ? '.lobibox-noty-wrapper-large' : '.lobibox-noty-wrapper')
                     + "." + me.$options.position.replace(/\s/gi, '.'),
                 $wrapper;
 
@@ -146,8 +146,8 @@ var Lobibox = Lobibox || {};
                     .addClass(selector.replace(/\./g, ' ').trim())
                     .appendTo($('body'));
                 if (me.$options.size === 'large') {
-                    $wrapper.append($('<ul class="lb-notify-tabs"></ul>'))
-                        .append($('<div class="lb-notify-wrapper"></div>'));
+                    $wrapper.append($('<ul class="lb-noty-tabs"></ul>'))
+                        .append($('<div class="lb-noty-wrapper"></div>'));
                 }
             }
             return $wrapper;
@@ -160,11 +160,11 @@ var Lobibox = Lobibox || {};
                 $body,
                 $msg,
                 $notify = $('<div></div>', {
-                    'class': 'lobibox-notify ' + OPTS[me.$type]['class'] + ' ' + OPTS['class'] + ' ' + me.$options.showClass
+                    'class': 'lobibox-noty ' + OPTS[me.$type]['class'] + ' ' + OPTS['class'] + ' ' + me.$options.showClass
                 });
 
-            $iconWrapper = $('<div class="lobibox-notify-icon-wrapper"></div>').appendTo($notify);
-            $iconEl = $('<div class="lobibox-notify-icon"></div>').appendTo($iconWrapper);
+            $iconWrapper = $('<div class="lobibox-noty-icon-wrapper"></div>').appendTo($notify);
+            $iconEl = $('<div class="lobibox-noty-icon"></div>').appendTo($iconWrapper);
             $innerIconEl = $('<div></div>').appendTo($iconEl);
 
             // Add image or icon depending on given parameters
@@ -176,18 +176,18 @@ var Lobibox = Lobibox || {};
                 $notify.addClass('without-icon');
             }
             // Create body, append title and message in body and append body in notification
-            $msg = $('<div class="lobibox-notify-msg">' + me.$options.msg + '</div>');
+            $msg = $('<div class="lobibox-noty-msg">' + me.$options.msg + '</div>');
 
             if (me.$options.messageHeight !== false){
                 $msg.css('max-height', me.$options.messageHeight);
             }
 
             $body = $('<div></div>', {
-                'class': 'lobibox-notify-body'
+                'class': 'lobibox-noty-body'
             }).append($msg).appendTo($notify);
 
             if (me.$options.title) {
-                $body.prepend('<div class="lobibox-notify-title">' + me.$options.title + '<div>');
+                $body.prepend('<div class="lobibox-noty-title">' + me.$options.title + '<div>');
             }
             _addCloseButton($notify);
             if (me.$options.size === 'normal' || me.$options.size === 'mini') {
@@ -268,11 +268,11 @@ var Lobibox = Lobibox || {};
             me.$el.removeClass(me.$options.showClass)
                 .addClass(me.$options.hideClass);
             var parent = me.$el.parent();
-            var wrapper = parent.closest('.lobibox-notify-wrapper-large');
+            var wrapper = parent.closest('.lobibox-noty-wrapper-large');
 
             var href = '#' + parent.attr('id');
 
-            var $li = wrapper.find('>.lb-notify-tabs>li:has(a[href="' + href + '"])');
+            var $li = wrapper.find('>.lb-noty-tabs>li:has(a[href="' + href + '"])');
             $li.addClass(Lobibox.notify.OPTIONS['class'])
                 .addClass(me.$options.hideClass);
             setTimeout(function () {
@@ -306,15 +306,15 @@ var Lobibox = Lobibox || {};
         }
     };
     Lobibox.notify.closeAll = function(){
-        var ll = $('.lobibox-notify');
+        var ll = $('.lobibox-noty');
         ll.each(function(ind, el){
             var notify =$(el).data('lobibox') .remove();
         });
     };
     //User can set default options to this variable
     Lobibox.notify.DEFAULTS = {
-        title: true,                // Title of notification. If you do not include the title in options it will automatically takes its value 
-        //from Lobibox.notify.OPTIONS object depending of the type of the notifications or set custom string. Set this false to disable title
+        title: true,                // Title of notification. If you do not include the title in options it will automatically takes its value
+        //from Lobibox.noty.OPTIONS object depending of the type of the notifications or set custom string. Set this false to disable title
         size: 'normal',             // normal, mini, large
         soundPath: 'sounds/',   // The folder path where sounds are located
         soundExt: '.ogg',           // Default extension for all sounds
@@ -345,31 +345,31 @@ var Lobibox = Lobibox || {};
             messageHeight: 96
         },
         mini: {
-            'class': 'notify-mini',
+            'class': 'noty-mini',
             messageHeight: 32
         },
         default: {
-            'class': 'lobibox-notify-default',
+            'class': 'lobibox-noty-default',
             'title': 'Default',
             sound: false
         },
         success: {
-            'class': 'lobibox-notify-success',
+            'class': 'lobibox-noty-success',
             'title': 'Success',
             sound: 'sound2'
         },
         error: {
-            'class': 'lobibox-notify-error',
+            'class': 'lobibox-noty-error',
             'title': 'Error',
             sound: 'sound4'
         },
         warning: {
-            'class': 'lobibox-notify-warning',
+            'class': 'lobibox-noty-warning',
             'title': 'Warning',
             sound: 'sound5'
         },
         info: {
-            'class': 'lobibox-notify-info',
+            'class': 'lobibox-noty-info',
             'title': 'Information',
             sound: 'sound6'
         },

@@ -82,7 +82,7 @@
 
 			target[fragments[fragments.length - 1]] = modules[id];
 		}
-		
+
 		// Expose private modules for unit tests
 		if (exports.AMDLC_TESTS) {
 			privateModules = exports.privateModules || {};
@@ -34248,7 +34248,7 @@ define("tinymce/file/Uploader", [
 
 		settings = Tools.extend({
 			credentials: false,
-			// We are adding a notify argument to this (at the moment, until it doesn't work)
+			// We are adding a noty argument to this (at the moment, until it doesn't work)
 			handler: defaultHandler
 		}, settings);
 

@@ -26,13 +26,13 @@
             <li class="nav-item"><a href=""><i class="la la-group"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">الاقسام الرئيسيه </span>
                     <span
-                        class="badge badge badge-danger badge-pill float-right mr-2"></span>
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{\App\Category::whereNull('parent_id')->count()}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
+                    <li class="active"><a class="menu-item" href="{{route('admin.categories.index')}}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">أضافة
+                    <li><a class="menu-item" href="{{route('admin.categories.create')}}" data-i18n="nav.dash.crypto">أضافة
                             قسم جديد </a>
                     </li>
                 </ul>
@@ -41,13 +41,13 @@
             <li class="nav-item"><a href=""><i class="la la-group"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">الاقسام الفرعية   </span>
                     <span
-                        class="badge badge badge-danger badge-pill float-right mr-2">400</span>
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{\App\Category::whereNotNull('parent_id')->count()}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
+                    <li class="active"><a class="menu-item" href="{{route('admin.subCategories.index')}}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">أضافة
+                    <li><a class="menu-item" href="{{route('admin.subCategories.create')}}" data-i18n="nav.dash.crypto">أضافة
                             قسم فرعي جديد </a>
                     </li>
                 </ul>
@@ -104,12 +104,12 @@
                 <ul class="menu-content">
                     <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">وسائل التوصيل</a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="{{route('edit.shipping-methods','free')}}"
+                            <li><a class="menu-item" href="{{route('admin.edit.shipping-methods','free')}}"
                                    data-i18n="nav.templates.vert.classic_menu">توصيل مجاني</a>
                             </li>
-                            <li><a class="menu-item" href="{{route('edit.shipping-methods','inner')}}">توصيل داخلي</a>
+                            <li><a class="menu-item" href="{{route('admin.edit.shipping-methods','inner')}}">توصيل داخلي</a>
                             </li>
-                            <li><a class="menu-item" href="{{route('edit.shipping-methods','outer')}}"
+                            <li><a class="menu-item" href="{{route('admin.edit.shipping-methods','outer')}}"
                                    data-i18n="nav.templates.vert.compact_menu">توصيل خارجي</a>
                             </li>
                         </ul>

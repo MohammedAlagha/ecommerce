@@ -23,14 +23,29 @@ Route::group([
         Route::get('logout','LoginController@logout')->name('admin.logout');
 
         Route::group(['prefix' => 'settings'], function () {
-            Route::get('shipping-method/{type}', 'SettingsController@editShipping')->name('edit.shipping-methods');
-            Route::put('shipping-method/{id}', 'SettingsController@updateShipping')->name('update.shipping-methods');
+            Route::get('shipping-method/{type}', 'SettingsController@editShipping')->name('admin.edit.shipping-methods');
+            Route::put('shipping-method/{id}', 'SettingsController@updateShipping')->name('admin.update.shipping-methods');
         });
 
         Route::group(['prefix' => 'profile'], function () {
-            Route::get('edit', 'ProfileController@editProfile')->name('edit.profile');
-            Route::put('update', 'ProfileController@updateProfile')->name('update.profile');
+            Route::get('edit', 'ProfileController@editProfile')->name('admin.edit.profile');
+            Route::put('update', 'ProfileController@updateProfile')->name('admin.update.profile');
         });
+
+        #############################categories routes#########################################
+
+            Route::resource('categories','CategoriesController',['as'=>'admin']);
+            Route::get('categories-data','CategoriesController@data')->name('admin.categories.data');
+
+        #############################end categories############################################
+
+
+        #############################categories routes#########################################
+
+        Route::resource('subCategories','SubCategoriesController',['as'=>'admin']);
+        Route::get('subCategories-data','SubCategoriesController@data')->name('admin.subCategories.data');
+
+        #############################end categories############################################
     });
 
 

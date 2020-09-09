@@ -197,7 +197,7 @@
     modifier: words("ATTRIBUTE ATTRIBUTES MANDATORY-GROUP MANDATORY-GROUPS" +
     " GROUP GROUPS ELEMENTS EQUALITY ORDERING SUBSTRINGS" +
     " DEFINED"),
-    accessTypes: words("not-accessible accessible-for-notify read-only" +
+    accessTypes: words("not-accessible accessible-for-noty read-only" +
     " read-create read-write"),
     multiLineStrings: true
   });

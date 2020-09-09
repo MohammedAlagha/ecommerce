@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="{{app()->getLocale() === 'ar'? 'rtl':'ltr'}}">
 <head>
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -48,6 +52,20 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/cryptocoins/cryptocoins.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/extensions/datedropper.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/extensions/timedropper.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/vendor/tables/datatable/datatables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/vendor/tables/datatable/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/vendor/tables/datatable/select.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/vendor/tables/datatable/jquery.dataTables.min.css')}}">
+
+    {{--    noty --}}
+    <link rel="stylesheet" href="{{asset('plugins/noty/noty.css')}}">
+    <script src="{{asset('plugins/noty/noty.min.js')}}"></script>
+
+    {{--axios--}}
+    <script src="{{asset('plugins/axios/axios.min.js')}}"></script>
+
+    {{--font-awesome--}}
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/font-awesome/css/font-awesome.min.css')}}">
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
     @if(app()->getLocale() == 'ar')
@@ -114,6 +132,7 @@
 <script src="{{asset('admin/js/core/app.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/js/scripts/customizer.js')}}" type="text/javascript"></script>
 <!-- END MODERN JS-->
+
 <!-- BEGIN PAGE LEVEL JS-->
 <script src="{{asset('admin/js/scripts/pages/dashboard-crypto.js')}}" type="text/javascript"></script>
 
@@ -126,6 +145,11 @@
 <script src="{{asset('admin/js/scripts/forms/checkbox-radio.js')}}" type="text/javascript"></script>
 
 <script src="{{asset('admin/js/scripts/modal/components-modal.js')}}" type="text/javascript"></script>
+
+
+
+
+
 
 <script>
     $('#meridians1').timeDropper({
@@ -175,6 +199,13 @@
     $('#meridians14').timeDropper({
         meridians: true,setCurrentTime: false
     });
+
+
+    window.axios.defaults.headers.common = {
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+
 </script>
 @yield('script')
 </body>

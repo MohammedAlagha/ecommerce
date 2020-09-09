@@ -45,7 +45,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('update.profile')}}"
+                                              action="{{route('admin.update.profile')}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
