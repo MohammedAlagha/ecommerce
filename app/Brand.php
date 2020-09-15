@@ -6,22 +6,26 @@ use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Brand extends Model
 {
+
     use Translatable;
 
-    protected $fillable = ['parent_id', 'slug', 'status'];
+    protected $fillable = ['status','photo'];
 
     protected $with = ['translations'];
 
     protected $translatedAttributes = ['name'];
 
+
+
     protected $hidden = ['translations'];
 
-    protected $casts = [
-        'status' => 'boolean'
-    ];
+    protected $appends = ['photo_url'];
 
+    protected $casts = [
+        'status'=>'boolean'
+    ];
 
     public function getStatusAttribute()
     {
@@ -38,17 +42,10 @@ class Category extends Model
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('Y-m-d H:i:s');
     }
 
-    public function children()
+    public function getPhotoUrlAttribute()
     {
-        return $this->hasMany(self::class,'parent_id','id');
-    }
-
-    public function parent()
-    {
-        return $this->belongsTo(self::class,'parent_id','id');
+        return asset('images/brands/'.$this->photo);
     }
 
 
 }
-
-

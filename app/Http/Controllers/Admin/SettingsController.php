@@ -50,8 +50,9 @@ class SettingsController extends Controller
 
         }catch (\Exception $ex){
 
-            return redirect()->back()->with(['error'=>'هناك خطأ ما يرجى المحاولة لاحقا']);
             DB::rollback();
+            return redirect()->back()->with(['error'=>'هناك خطأ ما يرجى المحاولة لاحقا']);
+
         };
 
 

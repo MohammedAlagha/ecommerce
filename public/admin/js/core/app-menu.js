@@ -225,15 +225,15 @@
         });
       }
 
-      // Added data attribute brand-center for navbar-brand-center
+      // Added data attribute brands-center for navbar-brands-center
       // TODO:AJ: Shift this feature in PUG.
       if($('.header-navbar').hasClass('navbar-brand-center')){
-        $('.header-navbar').attr('data-nav','brand-center');
+        $('.header-navbar').attr('data-nav','brands-center');
       }
       if(currentBreakpoint.name == 'sm' || currentBreakpoint.name == 'xs'){
-        $('.header-navbar[data-nav=brand-center]').removeClass('navbar-brand-center');
+        $('.header-navbar[data-nav=brands-center]').removeClass('navbar-brand-center');
       }else{
-        $('.header-navbar[data-nav=brand-center]').addClass('navbar-brand-center');
+        $('.header-navbar[data-nav=brands-center]').addClass('navbar-brand-center');
       }
 
       // Dropdown submenu on small screen on click
@@ -321,8 +321,8 @@
     },
 
     /*changeLogo: function(menuType){
-      var logo = $('.brand-logo');
-      var logoText = $('.brand-text');
+      var logo = $('.brands-logo');
+      var logoText = $('.brands-text');
       if(menuType == 'expand'){
         // logo.attr('src',logo.data('expand'));
         logoText.delay(100).fadeIn(200);
@@ -918,7 +918,7 @@
       else{
         topPos = menutop + $menuItem.height() + borderWidth;
       }
-      
+
       if($body.data('menu') == 'vertical-content-menu'){
         ul.addClass('menu-popout').appendTo('.main-menu-content').css({
           'top' : topPos,
