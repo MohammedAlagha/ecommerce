@@ -91,6 +91,7 @@
                                                                    name="status"
                                                                    id="switcheryColor4"
                                                                    class="switchery" data-color="success"
+                                                                   @if($category->status == 'مفعل') checked
                                                             />
                                                             <label for="switcheryColor4"
                                                                    class="card-title ml-1">الحالة </label>

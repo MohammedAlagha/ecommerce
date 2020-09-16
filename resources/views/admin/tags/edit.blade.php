@@ -1,6 +1,6 @@
 @extends('layouts.admin.app');
 
-@section('title',"اضافة قسم")
+@section('title',"تعديل tag")
 
 
 @section('content')
@@ -14,7 +14,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="">الرئيسية </a>
                                 </li>
-                                <li class="breadcrumb-item active">اضافة قسم
+                                <li class="breadcrumb-item active">تعديل Tag
                                 </li>
                             </ol>
                         </div>
@@ -28,7 +28,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">اضافة البيانات </h4>
+                                    <h4 class="card-title" id="basic-layout-form">تعديل البيانات </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -45,17 +45,19 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('admin.categories.store')}}"
+                                              action="{{route('admin.tags.update',$tag->id)}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
+                                            @method('put')
 
                                             <div class="form-body">
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="name"> الاسم </label>
-                                                            <input type="text" value="{{old('name')}}" id="name"
+                                                            <input type="text" value="{{old('name',$tag->name)}}" id="name"
                                                                    class="form-control"
                                                                    placeholder="  "
                                                                    name="name">
@@ -67,37 +69,18 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">الاسم بالرابط </label>
-                                                            <input type="text" value="{{old('slug')}}" id="email"
+                                                            <label for="name"> الاسم بالرابط </label>
+                                                            <input type="text" value="{{old('slug',$tag->slug)}}" id="name"
                                                                    class="form-control"
-                                                                   placeholder=""
+                                                                   placeholder="  "
                                                                    name="slug">
                                                             @error("slug")
                                                             <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
-
                                                 </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-1">
-                                                            <input type="hidden" name="status" value="0">
-                                                            <input type="checkbox" value="1"
-                                                                   name="status"
-                                                                   id="switcheryColor4"
-                                                                   class="switchery" data-color="success"
-                                                            />
-                                                            <label for="switcheryColor4"
-                                                                   class="card-title ml-1">الحالة </label>
-
-                                                            @error("status")
-                                                            <span class="text-danger">{{$message}} </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
 
 
@@ -124,3 +107,5 @@
     </div>
 
 @endsection
+
+

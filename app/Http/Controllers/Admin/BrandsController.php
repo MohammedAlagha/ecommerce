@@ -53,6 +53,7 @@ class BrandsController extends Controller
      */
     public function store(BrandRequest $request)
     {
+
         try {
 
 

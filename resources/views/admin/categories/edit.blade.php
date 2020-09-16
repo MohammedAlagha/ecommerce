@@ -70,7 +70,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> كلمات مفتاحية </label>
+                                                            <label for="projectinput1"> الاسم بالرابط </label>
                                                             <input type="text" value="{{old('slug',$category->slug)}}" id="email"
                                                                    class="form-control"
                                                                    placeholder=""

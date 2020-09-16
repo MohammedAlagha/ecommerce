@@ -131,6 +131,7 @@ class CategoriesController extends Controller
                 return \response()->json(['status'=>'error','message'=>'هذا القسم غير موجود']);
             }
 
+            $category->translation()->delete();
             $category->delete();
 
             return \response()->json(['status'=>'success','message'=>'تم الحذف بنجاح']);
