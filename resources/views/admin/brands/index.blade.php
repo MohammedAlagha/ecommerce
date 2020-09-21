@@ -76,7 +76,7 @@
 
 @endsection
 
-@section('script')
+@push('script')
 
     <script>
 
@@ -140,4 +140,4 @@
         })
     </script>
 
-@endsection
+@endpush

@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Enumerations\CategoryType;
 use App\Http\Requests\Admin\CategoryRequest;
-use Illuminate\Http\Request;
+use DB;
 use Yajra\DataTables\DataTables;
 
 class CategoriesController extends Controller
@@ -22,14 +23,16 @@ class CategoriesController extends Controller
 
     public function data()
     {
-        $categories = Category::all();
+        $categories = Category::with('parent')->get();
 
         return DataTables::of($categories)->addColumn('action', function ($category) {
             return "<a class='btn btn-xs btn-primary edit' href='" . route('admin.categories.edit', $category->id) . "' data-value = '" . $category->name . "'><i class='fa fa-edit'></i></a>
                 <a class='btn btn-xs btn-danger delete'  data-id= '$category->id' data-url='" . route('admin.categories.destroy', $category->id) . "'><i class='fa fa-trash'></i></a>";
         })->addColumn('name', function ($category) {
             return $category->name;
-        })->rawColumns(['action', 'name'])->make(true);
+        })->addColumn('parent',function ($category) {
+            return $category->parent->name??$category->parent;     //$category->parent return (no parent) if category dont have parent -> note the relationship in model
+        })->rawColumns(['action', 'name','parent'])->make(true);
     }
 
     /**
@@ -39,7 +42,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        $categories = Category::select('id', 'parent_id')->get();
+        return view('admin.categories.create', compact('categories'));
     }
 
     /**
@@ -51,15 +55,28 @@ class CategoriesController extends Controller
     public function store(CategoryRequest $request)
     {
         try {
+
+            DB::beginTransaction();
+
+            //if user choose main category then we must set null in parent_id
+
+            if ($request->type == CategoryType::mainCategory) //main category
+            {
+                $request->request->add(['parent_id'=>null]);
+            }
+
             $category = Category::create($request->all());
 
             $category->name = $request->name;
             $category->save();
 
+            DB::commit();
+
             return redirect()->route('admin.categories.index')->with(['success' => 'تمت الاضافة بنجاح']);
 
         }catch (\Exception $ex){
 
+            DB::rollback();
             return redirect()->route('admin.categories.index')->with(['error' => 'هناك خطأ ما يرجى المحاولة فيما بعد']);
 
         }

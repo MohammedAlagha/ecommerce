@@ -45,7 +45,9 @@ class Category extends Model
 
     public function parent()
     {
-        return $this->belongsTo(self::class,'parent_id','id');
+        return $this->belongsTo(self::class,'parent_id','id')->withDefault(function (){
+            return 'no parent';
+        });
     }
 
 

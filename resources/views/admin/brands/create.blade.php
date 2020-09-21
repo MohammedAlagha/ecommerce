@@ -127,7 +127,7 @@
 
 @endsection
 
-@section('script')
+@push('script')
     <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -146,4 +146,4 @@
             readURL(this);
         });
     </script>
-@endsection
+@endpush

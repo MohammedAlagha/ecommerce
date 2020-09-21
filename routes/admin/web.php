@@ -39,15 +39,6 @@ Route::group([
 
         #############################end categories############################################
 
-
-        #############################subCategories routes#########################################
-
-        Route::resource('subCategories','SubCategoriesController',['as'=>'admin']);
-        Route::get('subCategories-data','SubCategoriesController@data')->name('admin.subCategories.data');
-
-        #############################end subCategories routes ############################################
-
-
         ############################# brands routes#########################################
 
         Route::resource('brands','BrandsController',['as'=>'admin']);

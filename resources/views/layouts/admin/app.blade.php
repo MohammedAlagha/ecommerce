@@ -77,7 +77,7 @@
 
 {{--    @notify_css--}}
 
-    @yield('style')
+    @stack('style')
     <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
     <style>
         body {
@@ -102,6 +102,8 @@
 
 <!-- BEGIN VENDOR JS-->
 <script src="{{asset('admin/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
+
+
 <!-- BEGIN VENDOR JS-->
 <script src="{{asset('admin/vendors/js/tables/datatable/datatables.min.js')}}"
         type="text/javascript"></script>
@@ -207,6 +209,6 @@
     };
 
 </script>
-@yield('script')
+@stack('script')
 </body>
 </html>
