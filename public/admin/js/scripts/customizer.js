@@ -45,7 +45,7 @@
     }
     if(header_navbar.hasClass('navbar-semi-dark')){
         semiDark = true;
-    }    
+    }
 
     if(menu_type == 'horizontal-menu'){
         horz_layout = true;
@@ -57,7 +57,7 @@
         $('#collapsible-navigation').parent('.custom-checkbox').attr('style','display: none !important');
         $('#static-navigation').parent('.custom-checkbox').attr('style','display: none !important');
         $('#flipped-navigation').parent('.custom-checkbox').attr('style','display: none !important');
-        
+
         $('.color-options li:eq(3) a').tab('show');
     }
 
@@ -72,7 +72,7 @@
         $('.color-options .nav-semi-light').parent('.nav-item').attr('style','display: none !important');
         $('.color-options .nav-semi-dark').parent('.nav-item').attr('style','display: none !important');
     }
-    
+
     // Layouts
 
     // If overlay menu template then collapsed sidebar should be checked by default
@@ -178,27 +178,27 @@
 
     // Navbar
     if(menu_type === 'vertical-overlay-menu'){
-        $('#brand-center').prop('checked',true);
+        $('#brands-center').prop('checked',true);
     }
-    $('#brand-center').on('click',function(){
-        if(!header_navbar.hasClass('navbar-brand-center')){
+    $('#brands-center').on('click',function(){
+        if(!header_navbar.hasClass('navbar-brands-center')){
             if(semiLight == true){
                 header_navbar.removeClass('navbar-semi-light');
             }
             if(semiDark == true){
                 header_navbar.removeClass('navbar-semi-dark');
             }
-            header_navbar.addClass('navbar-dark navbar-brand-center');
+            header_navbar.addClass('navbar-dark navbar-brands-center');
             changeLogo('light');
         }
         else{
             if(semiLight == true){
-                header_navbar.removeClass('navbar-dark navbar-brand-center');
+                header_navbar.removeClass('navbar-dark navbar-brands-center');
                 changeLogo('dark');
                 header_navbar.addClass('navbar-semi-light');
             }
             if(semiDark == true){
-                header_navbar.removeClass('navbar-dark navbar-brand-center');
+                header_navbar.removeClass('navbar-dark navbar-brands-center');
                 changeLogo('light');
                 header_navbar.addClass('navbar-semi-dark');
             }
@@ -449,10 +449,10 @@
 
     function changeLogo(logo){
         if(logo == 'light'){
-            $('.brand-logo').attr('src','../../../app-assets/images/logo/logo.png');
+            $('.brands-logo').attr('src','../../../app-assets/images/logo/logo.png');
         }
         else{
-            $('.brand-logo').attr('src','../../../app-assets/images/logo/logo.png');
+            $('.brands-logo').attr('src','../../../app-assets/images/logo/logo.png');
         }
     }
 })(window, document, jQuery);

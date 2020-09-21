@@ -1,6 +1,6 @@
 @extends('layouts.admin.app');
 
-@section('title',"اضافة قسم")
+@section('title',"اضافة ماركة")
 
 
 @section('content')
@@ -14,7 +14,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="">الرئيسية </a>
                                 </li>
-                                <li class="breadcrumb-item active">اضافة قسم
+                                <li class="breadcrumb-item active">اضافة ماركة
                                 </li>
                             </ol>
                         </div>
@@ -45,12 +45,28 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('admin.categories.store')}}"
+                                              action="{{route('admin.brands.store')}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
 
                                             <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="photo"> الصورة </label>
+                                                            <input type="file"  id="imgInp"
+                                                                   class="form-control-file"
+                                                                   name="photo">
+                                                            <img id="blah" src="#" alt="brand image" />
+                                                            @error("photo")
+                                                            <span class="text-danger">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -64,20 +80,6 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1">الاسم بالرابط </label>
-                                                            <input type="text" value="{{old('slug')}}" id="email"
-                                                                   class="form-control"
-                                                                   placeholder=""
-                                                                   name="slug">
-                                                            @error("slug")
-                                                            <span class="text-danger">{{$message}}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
                                                 </div>
 
                                                 <div class="row">
@@ -123,4 +125,25 @@
         </div>
     </div>
 
+@endsection
+
+@section('script')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+
+                reader.onload = function(e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#imgInp").change(function() {
+            readURL(this);
+        });
+    </script>
 @endsection

@@ -6,11 +6,11 @@ use Astrotomic\Translatable\Translatable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Tag extends Model
 {
     use Translatable;
 
-    protected $fillable = ['parent_id', 'slug', 'status'];
+    protected $fillable = ['slug'];
 
     protected $with = ['translations'];
 
@@ -18,15 +18,6 @@ class Category extends Model
 
     protected $hidden = ['translations'];
 
-    protected $casts = [
-        'status' => 'boolean'
-    ];
-
-
-    public function getStatusAttribute()
-    {
-        return $this->attributes['status'] == 0 ? 'غيرمفعل' : 'مفعل';
-    }
 
     public function getCreatedAtAttribute()
     {
@@ -37,18 +28,4 @@ class Category extends Model
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('Y-m-d H:i:s');
     }
-
-    public function children()
-    {
-        return $this->hasMany(self::class,'parent_id','id');
-    }
-
-    public function parent()
-    {
-        return $this->belongsTo(self::class,'parent_id','id');
-    }
-
-
 }
-
-
