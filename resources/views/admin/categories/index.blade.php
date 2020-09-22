@@ -50,6 +50,8 @@
                                                 </th>
                                                 <th class="th-sm">name
                                                 </th>
+                                                <th class="th-sm">parent
+                                                </th>
                                                 <th class="th-sm">slug
                                                 </th>
                                                 <th class="th-sm">status
@@ -76,7 +78,7 @@
 
 @endsection
 
-@section('script')
+@push('script')
 
 <script>
 
@@ -92,6 +94,7 @@
             columns: [
                 {data: 'id'},
                 {data: 'name'},
+                {data: 'parent'},
                 {data: 'slug'},
                 {data: 'status'},
                 {data: 'updated_at'},
@@ -140,4 +143,4 @@
     })
 </script>
 
-@endsection
+@endpush
