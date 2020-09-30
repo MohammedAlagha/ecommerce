@@ -21,14 +21,14 @@ document.addEventListener("DOMContentLoaded", function() {
             comments: "I would rate it &#x2605;&#x2605;&#x2605;&#x2605;&#x2606;",
             cover: "http://ecx.images-amazon.com/images/I/51bRhyVTVGL._SL50_.jpg"
         }, {
-            title: "<a href='http://shop.oreilly.com/product/9780596517748.do'>JavaScript: The Good Parts</a>",
+            title: "<a href='http://shop.oreilly.com/products/9780596517748.do'>JavaScript: The Good Parts</a>",
             description: "This book provides a developer-level introduction along with <b>more advanced</b> and useful features of JavaScript.",
             comments: "This is the book about JavaScript",
             cover: "http://ecx.images-amazon.com/images/I/51gdVAEfPUL._SL50_.jpg"
         }, {
-            title: "<a href='http://shop.oreilly.com/product/9780596805531.do'>JavaScript: The Definitive Guide</a>",
+            title: "<a href='http://shop.oreilly.com/products/9780596805531.do'>JavaScript: The Definitive Guide</a>",
             description: "<em>JavaScript: The Definitive Guide</em> provides a thorough description of the core <b>JavaScript</b> language and both the legacy and standard DOMs implemented in web browsers.",
-            comments: "I've never actually read it, but the <a href='http://shop.oreilly.com/product/9780596805531.do'>comments</a> are highly <strong>positive</strong>.",
+            comments: "I've never actually read it, but the <a href='http://shop.oreilly.com/products/9780596805531.do'>comments</a> are highly <strong>positive</strong>.",
             cover: "http://ecx.images-amazon.com/images/I/51VFNL4T7kL._SL50_.jpg"
         }],
         container1,

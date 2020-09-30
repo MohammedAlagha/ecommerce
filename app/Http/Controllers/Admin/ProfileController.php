@@ -18,8 +18,8 @@ class ProfileController extends Controller
     {
 
         try {
-            dd($request->all());
-            Admin::find(auth('admin')->user()->id)->update($request->all());
+//            dd($request->all());
+               Admin::find(auth('admin')->user()->id)->update($request->all());
 
             return redirect()->back()->with(['success'=>'تم التحديث بنجاح']);
         }catch (\Exception $ex){

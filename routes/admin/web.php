@@ -52,6 +52,13 @@ Route::group([
         Route::get('tags-data','TagsController@data')->name('admin.tags.data');
 
         #############################end tags routes############################################
+
+        ############################# Products routes#########################################
+
+        Route::resource('products','ProductsController',['as'=>'admin']);
+        Route::get('products-data','ProductsController@data')->name('admin.products.data');
+
+        #############################end Products routes############################################
     });
 
 

@@ -47,5 +47,11 @@ class Brand extends Model
         return asset('images/brands/'.$this->photo);
     }
 
+    //    ----------------------------------------------------scopes-----------------------------------------------
+
+    public function scopeActive($query)
+    {
+        return $query->where('status',1);
+    }
 
 }

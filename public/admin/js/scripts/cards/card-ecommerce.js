@@ -51,7 +51,7 @@
                 // Add title
                 title: {
                     text: 'Monthly Sales',
-                    subtext: 'product sales on monthly basis',
+                    subtext: 'products sales on monthly basis',
                     x: 'center',
                     textStyle: {
                         color: '#FFF'

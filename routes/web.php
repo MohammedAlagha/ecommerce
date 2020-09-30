@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('test',function (){
-    return \App\Setting::find(13);
+    return view('admin.products.general.create');
 })->name('admin.dashboard');

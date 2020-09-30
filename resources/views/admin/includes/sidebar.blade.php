@@ -61,7 +61,21 @@
                     <li class="active"><a class="menu-item" href="{{route('admin.tags.index')}}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="{{route('admin.tags.create')}}" data-i18n="nav.dash.crypto"> اضافةعلامة جديدة</a>
+                    <li><a class="menu-item" href="{{route('admin.tags.create')}}" data-i18n="nav.dash.crypto"> اضافة علامة جديدة</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="{{route('admin.products.index')}}"><i class="la la-group"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">المنتجات</span>
+                    <span
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{\App\Product::count()}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href="{{route('admin.products.index')}}"
+                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.products.create')}}" data-i18n="nav.dash.crypto"> اضافة منتج جديدة</a>
                     </li>
                 </ul>
             </li>

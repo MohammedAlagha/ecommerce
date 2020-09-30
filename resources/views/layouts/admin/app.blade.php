@@ -14,6 +14,7 @@
           content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
     <title>@yield('title')</title>
+
     <link rel="apple-touch-icon" href="{{asset('admin/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin/images/ico/favicon.ico')}}">
     <link
@@ -25,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css-rtl/plugins/animate/animate.css')}}">
     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/vendors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/editors/summernote.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/weather-icons/climacons.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/fonts/meteocons/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/charts/morris.css')}}">
@@ -37,7 +39,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/forms/toggle/switchery.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/pages/chat-application.css')}}">
+
     <!-- END VENDOR CSS-->
+
+
     <!-- BEGIN MODERN CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/custom-rtl.css')}}">
@@ -100,6 +105,7 @@
 @notify_js
 @notify_render
 
+
 <!-- BEGIN VENDOR JS-->
 <script src="{{asset('admin/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
 
@@ -120,6 +126,10 @@
 <script src="{{asset('admin/js/scripts/forms/select/form-select2.js')}}" type="text/javascript"></script>
 
 <!-- BEGIN PAGE VENDOR JS-->
+<script src="{{asset('admin/vendors/js/ui/headroom.min.js')}}" type="text/javascript"></script>
+
+<script src="{{asset('admin/vendors/js/editors/summernote/summernote.js')}}" type="text/javascript"></script> {{-- editor --}}
+
 <script src="{{asset('admin/vendors/js/charts/chart.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/js/charts/echarts/echarts.js')}}" type="text/javascript"></script>
 
@@ -128,29 +138,33 @@
 
 <script src="{{asset('admin/vendors/js/forms/icheck/icheck.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/js/scripts/pages/chat-application.js')}}" type="text/javascript"></script>
+
 <!-- END PAGE VENDOR JS-->
+
+
+
+
+<!-- BEGIN PAGE LEVEL JS-->
+<script src="{{asset('admin/js/scripts/pages/dashboard-crypto.js')}}" type="text/javascript"></script>
+
+<script src="{{asset('admin/js/scripts/tables/datatables/datatable-basic.js')}}"
+        type="text/javascript"></script>
+<script src="{{asset('admin/js/scripts/extensions/date-time-dropper.js')}}" type="text/javascript"></script>
+
+<script src="{{asset('admin/js/scripts/editors/editor-summernote.js')}}" type="text/javascript"></script>
+<!-- END PAGE LEVEL JS-->
+
+
 <!-- BEGIN MODERN JS-->
 <script src="{{asset('admin/js/core/app-menu.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/js/core/app.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/js/scripts/customizer.js')}}" type="text/javascript"></script>
 <!-- END MODERN JS-->
 
-<!-- BEGIN PAGE LEVEL JS-->
-<script src="{{asset('admin/js/scripts/pages/dashboard-crypto.js')}}" type="text/javascript"></script>
-
-
-<script src="{{asset('admin/js/scripts/tables/datatables/datatable-basic.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('admin/js/scripts/extensions/date-time-dropper.js')}}" type="text/javascript"></script>
-<!-- END PAGE LEVEL JS-->
 
 <script src="{{asset('admin/js/scripts/forms/checkbox-radio.js')}}" type="text/javascript"></script>
 
 <script src="{{asset('admin/js/scripts/modal/components-modal.js')}}" type="text/javascript"></script>
-
-
-
-
 
 
 <script>
