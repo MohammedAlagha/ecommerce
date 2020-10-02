@@ -43,6 +43,7 @@
                                 @include('admin.includes.alerts.success')
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
+                                    <hr>
                                     <div class="card-body">
                                         <form class="form"
                                               action="{{route('admin.brands.update',$brand->id)}}"

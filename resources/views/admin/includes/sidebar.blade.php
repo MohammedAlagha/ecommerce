@@ -75,7 +75,7 @@
                     <li class="active"><a class="menu-item" href="{{route('admin.products.index')}}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="{{route('admin.products.create')}}" data-i18n="nav.dash.crypto"> اضافة منتج جديدة</a>
+                    <li><a class="menu-item" href="{{route('admin.products.create')}}" data-i18n="nav.dash.crypto"> اضافة منتج جديد</a>
                     </li>
                 </ul>
             </li>

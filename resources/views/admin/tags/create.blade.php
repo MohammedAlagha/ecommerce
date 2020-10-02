@@ -14,6 +14,8 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="">الرئيسية </a>
                                 </li>
+                                <li class="breadcrumb-item"><a href="">العلامات </a>
+                                </li>
                                 <li class="breadcrumb-item active">اضافة Tag
                                 </li>
                             </ol>
@@ -43,6 +45,7 @@
                                 @include('admin.includes.alerts.success')
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
+                                    <hr>
                                     <div class="card-body">
                                         <form class="form"
                                               action="{{route('admin.tags.store')}}"

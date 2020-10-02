@@ -28,11 +28,11 @@ class GeneralProductRequest extends FormRequest
             'slug'=>'required|unique:products,slug,'.$this->id,
             'description'=>'required|max:1000',
             'short_description'=>'nullable|max:500',
-            'categories'=>'array|min:1',
+            'categories'=>'required|array|min:1',
             'categories.*'=>'numeric|exists:categories,id',
-            'tags'=>'array|min:1',
+            'tags'=>'nullable|array|min:1',
             'tags.*'=>'numeric|exists:tags,id',
-            'brand_id'=>'required|exists:brand,id'
+            'brand_id'=>'required|exists:brands,id'
         ];
     }
 }

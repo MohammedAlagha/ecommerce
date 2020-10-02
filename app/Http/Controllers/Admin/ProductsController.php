@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Brand;
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\GeneralProductRequest;
+use App\Product;
 use App\Tag;
 use Illuminate\Http\Request;
+use DB;
 
 class ProductsController extends Controller
 {
@@ -32,7 +35,7 @@ class ProductsController extends Controller
         $data['tags'] = Tag::select('id')->get();
         $data['categories'] = Category::active()->select('id')->get();
 
-        return view('admin.products.general.create',$data);
+        return view('admin.products.general.create',compact('data'));
 
     }
 
@@ -42,9 +45,40 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GeneralProductRequest $request)
     {
-        //
+
+        try {
+
+        dd($request->all());
+        DB::beginTransaction();
+        $product = Product::create([
+            'slug'=>$request->slug,
+            'brand_id'=>$request->brand_id,
+            'status'=>$request->status
+        ]);
+
+        // save translations
+        $product->name = $request->name;
+        $product->short_description = $request->short_description;
+        $product->description = $request->description;
+        $product->save();
+
+        // save product categories
+        $product->categories()->attach($request->categories);
+
+        //save product tags
+        $product->categories()->attach($request->tags);
+
+
+        DB::commit();
+
+        }catch(\Exception $ex){
+            DB::rollback();
+
+        }
+
+
     }
 
     /**

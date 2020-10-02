@@ -26,7 +26,6 @@ class Product extends Model
         'status'
     ];
 
-    protected $appends = ['in_stock'];
 
     protected $with = ['translations'];
 
@@ -47,14 +46,6 @@ class Product extends Model
     protected $translatedAttributes = ['name', 'description', 'short_description'];
 
 
-    public function getInStockAttribute()
-    {
-        if ($this->attributes['qty'] > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public function brand()
     {
@@ -79,4 +70,10 @@ class Product extends Model
         return $query->where('status',1);
     }
 
+    //--------------------------------------------------getters----------------------------------------------
+
+    public function getStatusAttribute()
+    {
+        return $this->attributes['status'] == 0 ? 'غيرمفعل' : 'مفعل';
+    }
 }
