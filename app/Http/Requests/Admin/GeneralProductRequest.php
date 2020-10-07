@@ -32,7 +32,17 @@ class GeneralProductRequest extends FormRequest
             'categories.*'=>'numeric|exists:categories,id',
             'tags'=>'nullable|array|min:1',
             'tags.*'=>'numeric|exists:tags,id',
-            'brand_id'=>'required|exists:brands,id'
+            'brand_id'=>'required|exists:brands,id',
+
+            'price'=>'required|min:0|numeric',
+            'special_price'=>'nullable|numeric',
+            'special_price_type'=>'required_with:special_price|in:fixed,percent ',
+            'special_price_start'=>'required_with:special_price|date_format:Y-m-d',
+            'special_price_end'=>'required_with:special_price|date_format:Y-m-d',
+
+            'sku'=>'nullable|min:3|max:12',
+            'manage_stock'=>'required|in:0,1',
+            'qty'=>'required_if:manage_stock,==,1',
         ];
     }
 }

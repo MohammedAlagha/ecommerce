@@ -115,9 +115,10 @@ class CategoriesController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update(CategoryRequest $request, $id)
     {
         try {
+            $category = Category::find($id);
             if (!$category) {
                 return redirect()->route('admin.categories.index')->with(['error' => 'هذا القسم غير موجود']);
             }

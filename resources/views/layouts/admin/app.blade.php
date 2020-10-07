@@ -37,7 +37,6 @@
     <link rel="stylesheet" type="text/css"
           href="{{asset('admin/vendors/css/forms/toggle/bootstrap-switch.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/forms/toggle/switchery.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/pages/chat-application.css')}}">
 
     <!-- END VENDOR CSS-->
@@ -48,13 +47,17 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/custom-rtl.css')}}">
     <!-- END MODERN CSS-->
     <!-- BEGIN Page Level CSS-->
-    <link rel="stylesheet" type="text/css"
-          href="{{asset('admin/'.getFolder().'/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/plugins/forms/wizard.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/plugins/pickers/daterange/daterange.css')}}">
+
+
+
     <link rel="stylesheet" type="text/css" href="{{asset('admin/fonts/simple-line-icons/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/core/colors/palette-gradient.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/pages/timeline.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/cryptocoins/cryptocoins.css')}}">
+
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/extensions/datedropper.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/extensions/timedropper.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendor/tables/datatable/datatables.min.css')}}">
@@ -81,6 +84,7 @@
     <!-- END Custom CSS-->
 
 {{--    @notify_css--}}
+
 
     @stack('style')
     <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
@@ -111,6 +115,7 @@
 
 
 <!-- BEGIN VENDOR JS-->
+
 <script src="{{asset('admin/vendors/js/tables/datatable/datatables.min.js')}}"
         type="text/javascript"></script>
 <script src="{{asset('admin/vendors/js/tables/datatable/dataTables.buttons.min.js')}}"
@@ -126,6 +131,12 @@
 <script src="{{asset('admin/js/scripts/forms/select/form-select2.js')}}" type="text/javascript"></script>
 
 <!-- BEGIN PAGE VENDOR JS-->
+<script src="{{asset('admin/vendors/js/pickers/dateTime/moment-with-locales.min.js')}}"
+        type="text/javascript"></script>
+<script src="{{asset('admin/vendors/js/pickers/daterange/daterangepicker.js')}}"
+        type="text/javascript"></script>
+<script src="{{asset('admin/vendors/js/forms/validation/jquery.validate.min.js')}}"
+        type="text/javascript"></script>
 <script src="{{asset('admin/vendors/js/ui/headroom.min.js')}}" type="text/javascript"></script>
 
 <script src="{{asset('admin/vendors/js/editors/summernote/summernote.js')}}" type="text/javascript"></script> {{-- editor --}}
@@ -138,10 +149,9 @@
 
 <script src="{{asset('admin/vendors/js/forms/icheck/icheck.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/js/scripts/pages/chat-application.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin/vendors/js/extensions/jquery.steps.min.js')}}" type="text/javascript"></script>
 
 <!-- END PAGE VENDOR JS-->
-
-
 
 
 <!-- BEGIN PAGE LEVEL JS-->
@@ -149,9 +159,15 @@
 
 <script src="{{asset('admin/js/scripts/tables/datatables/datatable-basic.js')}}"
         type="text/javascript"></script>
+
 <script src="{{asset('admin/js/scripts/extensions/date-time-dropper.js')}}" type="text/javascript"></script>
 
+
+
 <script src="{{asset('admin/js/scripts/editors/editor-summernote.js')}}" type="text/javascript"></script>
+
+<script src="{{asset('admin/js/scripts/forms/wizard-steps.js')}}" type="text/javascript"></script>
+
 <!-- END PAGE LEVEL JS-->
 
 

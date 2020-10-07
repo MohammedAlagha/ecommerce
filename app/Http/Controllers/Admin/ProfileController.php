@@ -18,8 +18,14 @@ class ProfileController extends Controller
     {
 
         try {
-//            dd($request->all());
-               Admin::find(auth('admin')->user()->id)->update($request->all());
+//            dd($request->except('password','password_confirmation'));
+//            dd($request->filled('password','password_confirmation'));
+            if ($request->filled('password','password_confirmation')) {
+                Admin::find(auth('admin')->user()->id)->update($request->all());
+            }else{
+                Admin::find(auth('admin')->user()->id)->update($request->except('password','password_confirmation'));
+            }
+
 
             return redirect()->back()->with(['success'=>'تم التحديث بنجاح']);
         }catch (\Exception $ex){

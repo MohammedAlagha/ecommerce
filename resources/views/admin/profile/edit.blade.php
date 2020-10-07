@@ -87,9 +87,8 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="password"> كلمة المرور الجديدة </label>
-                                                            <input type="password" value="" id="password"
+                                                            <input type="password"  id="password"
                                                                    class="form-control"
-                                                                   placeholder="  "
                                                                    name="password">
                                                             @error("password")
                                                             <span class="text-danger">{{$message}}</span>
@@ -100,9 +99,8 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="password_confirm"> تأكيد كلمة المرور الجديدة </label>
-                                                            <input type="password" value="" id="password_confirmation"
+                                                            <input type="password"  id="password_confirmation"
                                                                    class="form-control"
-                                                                   placeholder=""
                                                                    name="password_confirmation">
                                                             @error("password_confirmation")
                                                             <span class="text-danger">{{$message}}</span>
