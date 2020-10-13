@@ -38,6 +38,7 @@
           href="{{asset('admin/vendors/css/forms/toggle/bootstrap-switch.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/forms/toggle/switchery.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/pages/chat-application.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/vendors/css/file-uploaders/dropzone.min.css')}}">
 
     <!-- END VENDOR CSS-->
 
@@ -64,6 +65,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendor/tables/datatable/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendor/tables/datatable/select.dataTables.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('admin/vendor/tables/datatable/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/'.getFolder().'/plugins/file-uploaders/dropzone.min.css')}}">
+
 
     {{--    noty --}}
     <link rel="stylesheet" href="{{asset('plugins/noty/noty.css')}}">
@@ -131,6 +134,9 @@
 <script src="{{asset('admin/js/scripts/forms/select/form-select2.js')}}" type="text/javascript"></script>
 
 <!-- BEGIN PAGE VENDOR JS-->
+
+
+
 <script src="{{asset('admin/vendors/js/pickers/dateTime/moment-with-locales.min.js')}}"
         type="text/javascript"></script>
 <script src="{{asset('admin/vendors/js/pickers/daterange/daterangepicker.js')}}"
@@ -150,6 +156,8 @@
 <script src="{{asset('admin/vendors/js/forms/icheck/icheck.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/js/scripts/pages/chat-application.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/js/extensions/jquery.steps.min.js')}}" type="text/javascript"></script>
+
+<script src="{{asset('admin/vendors/js/extensions/dropzone.min.js')}}" type="text/javascript"></script>
 
 <!-- END PAGE VENDOR JS-->
 
@@ -182,6 +190,7 @@
 
 <script src="{{asset('admin/js/scripts/modal/components-modal.js')}}" type="text/javascript"></script>
 
+<script src="{{asset('admin/js/scripts/extensions/dropzone.js')}}" type="text/javascript"></script>
 
 <script>
     $('#meridians1').timeDropper({
