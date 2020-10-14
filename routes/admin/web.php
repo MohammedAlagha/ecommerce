@@ -58,6 +58,11 @@ Route::group([
         Route::resource('products','ProductsController',['as'=>'admin']);
         Route::get('products-data','ProductsController@data')->name('admin.products.data');
 
+
+            //images Routes
+        Route::get('images/{id}','ProductsController@addImages')->name('admin.products.images');
+        Route::post('images/store','ProductsController@storeImages')->name('admin.products.images.store');
+        Route::post('images/store_in_db','ProductsController@storeImagesInDB')->name('admin.products.images.store.db');
         #############################end Products routes############################################
     });
 

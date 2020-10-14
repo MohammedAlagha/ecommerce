@@ -44,7 +44,7 @@
                                 <div class="card-text">
                                     <p>املأ الفورم لاضافة منتج</p>
                                 </div>
-                                <form class="form form-horizontal">
+                                <form class="form form-horizontal" >
                                     <div class="form-body">
                                         <h4 class="form-section"><i class="la la-eye"></i> المعلومات الأساسية</h4>
                                         <div class="row">
@@ -182,6 +182,14 @@
 
                                         </div>
 
+                                        {{----------------------------------------الصور---------------------------------------}}
+                                        <h4 class="form-section"><i class="ft-mail"></i> الصور</h4>
+
+                                        <div class="dropzone dropzone-area" id="dpz-multiple-files">
+
+                                        </div>
+                                        <hr>
+
                                         {{--------------------------------------------------------السعر----------------------------------------------------------------}}
                                         <h4 class="form-section"><i class="ft-mail"></i> السعر</h4>
                                         <div class="row">
@@ -248,6 +256,8 @@
                                     </div>
 
                                     {{----------------------------------------------------------------------المستودع-----------------------------------------}}
+
+
                                     <h4 class="form-section"><i class="ft-mail"></i> المستودع</h4>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -311,6 +321,8 @@
                                     </div>
 
 
+
+
                                     {{---------------------------------------submit----------------------------------------}}
                                     <div class="form-actions right">
                                         <button type="button" class="btn btn-warning mr-1">
@@ -320,6 +332,7 @@
                                             <i class="la la-check-square-o"></i> Save
                                         </button>
                                     </div>
+
                                 </form>
                             </div>
                         </div>
@@ -329,48 +342,52 @@
         </div>
     </div>
 
-    <div class="app-content content">
-        <div class="content-wrapper">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Multiple Files Upload</h4>
-                            <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
-                            <div class="heading-elements">
-                                <ul class="list-inline mb-0">
-                                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                                    <li><a data-action="close"><i class="ft-x"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-content collapse show">
-                            <div class="card-body">
-                                <form action="#" class="dropzone dropzone-area" id="dpz-multiple-files">
-                                    <div class="dz-message">Drop Files Here To Upload</div>
-                                </form>
-                                {{-------------------------------------submit---------------------------------------------------------}}
-                                <div class="form-actions right">
-                                    <button type="button" class="btn btn-warning mr-1">
-                                        <i class="ft-x"></i> Cancel
-                                    </button>
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="la la-check-square-o"></i> Save
-                                    </button>
-                                </div>
-                            </div>
+{{--    <div class="app-content content">--}}
+{{--        <div class="content-wrapper">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-12">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Multiple Files Upload</h4>--}}
+{{--                            <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>--}}
+{{--                            <div class="heading-elements">--}}
+{{--                                <ul class="list-inline mb-0">--}}
+{{--                                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>--}}
+{{--                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>--}}
+{{--                                    <li><a data-action="close"><i class="ft-x"></i></a></li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-content collapse show">--}}
+{{--                            <div class="card-body">--}}
+{{--                                <form action="{{route('admin.products.images.store.db')}}" method="POST" enctype="multipart/form-data" class="dropzone dropzone-area" id="dpz-multiple-files">--}}
+{{--                                    @csrf--}}
 
 
-                        </div>
+{{--                                    <input type="hidden" value="">--}}
+{{--                                    <div class="dz-message">Drop Files Here To Upload</div>--}}
+{{--                                </form>--}}
+{{--                                --}}{{-------------------------------------submit---------------------------------------------------------}}
+{{--                                <div class="form-actions right">--}}
+{{--                                    <button type="button" class="btn btn-warning mr-1">--}}
+{{--                                        <i class="ft-x"></i> Cancel--}}
+{{--                                    </button>--}}
+{{--                                    <button type="submit" class="btn btn-primary">--}}
+{{--                                        <i class="la la-check-square-o"></i> Save--}}
+{{--                                    </button>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                    </div>
 
-                </div>
+{{--                        </div>--}}
 
-            </div>
-        </div>
-    </div>
+{{--                    </div>--}}
+
+{{--                </div>--}}
+
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 
     {{--    <div class="app-content content">--}}
@@ -989,6 +1006,63 @@
                 $('#qty_div').addClass('hidden');
             }
         })
+    </script>
+
+    <script>
+
+
+        var uploadedDocumentMap = {}
+        Dropzone.options.dpzMultipleFiles = {
+            paramName: "dzfile", // The name that will be used to transfer the file
+            //autoProcessQueue: false,
+            maxFilesize: 5, // MB
+            clickable: true,
+            addRemoveLinks: true,
+            acceptedFiles: 'image/*',
+            dictFallbackMessage: " المتصفح الخاص بكم لا يدعم خاصيه تعدد الصوره والسحب والافلات ",
+            dictInvalidFileType: "لايمكنك رفع هذا النوع من الملفات ",
+            dictCancelUpload: "الغاء الرفع ",
+            dictCancelUploadConfirmation: " هل انت متاكد من الغاء رفع الملفات ؟ ",
+            dictRemoveFile: "حذف الصوره",
+            dictMaxFilesExceeded: "لايمكنك رفع عدد اكثر من هذا ",
+            headers: {
+                'X-CSRF-TOKEN':
+                    "{{ csrf_token() }}"
+            }
+            ,
+            url: "{{ route('admin.products.images.store') }}", // Set the url
+            success:
+                function (file, response) {
+                    $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
+                    uploadedDocumentMap[file.name] = response.name
+                }
+            ,
+            removedfile: function (file) {
+                file.previewElement.remove()
+                var name = ''
+                if (typeof file.file_name !== 'undefined') {
+                    name = file.file_name
+                } else {
+                    name = uploadedDocumentMap[file.name]
+                }
+                $('form').find('input[name="document[]"][value="' + name + '"]').remove()
+            }
+            ,
+            // previewsContainer: "#dpz-btn-select-files", // Define the container to display the previews
+            init: function () {
+                    @if(isset($event) && $event->document)
+                var files =
+                {!! json_encode($event->document) !!}
+                    for (var i in files) {
+                    var file = files[i]
+                    this.options.addedfile.call(this, file)
+                    file.previewElement.classList.add('dz-complete')
+                    $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">')
+                }
+                @endif
+            }
+        }
+
     </script>
 @endpush
 

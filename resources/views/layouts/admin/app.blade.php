@@ -190,7 +190,7 @@
 
 <script src="{{asset('admin/js/scripts/modal/components-modal.js')}}" type="text/javascript"></script>
 
-<script src="{{asset('admin/js/scripts/extensions/dropzone.js')}}" type="text/javascript"></script>
+{{--<script src="{{asset('admin/js/scripts/extensions/dropzone.js')}}" type="text/javascript"></script>--}}
 
 <script>
     $('#meridians1').timeDropper({

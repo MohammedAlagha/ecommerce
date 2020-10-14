@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\GeneralProductRequest;
 use App\Product;
 use App\Tag;
-use Illuminate\Http\Request;
 use DB;
+use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
@@ -118,11 +118,29 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+    }
+
+    //to store images to folder only
+    public function storeImages(Request $request)
+    {
+        $file = $request->file('dzfile');
+        $fileName = uploadImage('products',$file);
+
+        return response()->json([
+            'name'=>$fileName,
+            'original_name'=>$file->getClientOriginalName(),
+        ]);
+    }
+
+    //to store images in database
+    public function storeImagesInDB()
+    {
+
     }
 }

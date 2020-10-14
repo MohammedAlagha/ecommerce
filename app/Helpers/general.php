@@ -9,7 +9,7 @@ function getFolder()
     return app()->getLocale() == 'ar' ? 'css-rtl' : 'css';
 }
 
-function uploadImage($folder, $image, $format)
+function uploadImage($folder, $image, $format = 'JPG')
 {
     $photo = Image::make($image)->encode($format);
 
