@@ -24,6 +24,8 @@ class GeneralProductRequest extends FormRequest
     public function rules()
     {
         return [
+
+            //main information validation
             'name'=>'required|max:100',
             'slug'=>'required|unique:products,slug,'.$this->id,
             'description'=>'required|max:1000',
@@ -34,15 +36,22 @@ class GeneralProductRequest extends FormRequest
             'tags.*'=>'numeric|exists:tags,id',
             'brand_id'=>'required|exists:brands,id',
 
+            //price validation
             'price'=>'required|min:0|numeric',
             'special_price'=>'nullable|numeric',
-            'special_price_type'=>'required_with:special_price|in:fixed,percent ',
-            'special_price_start'=>'required_with:special_price|date_format:Y-m-d',
-            'special_price_end'=>'required_with:special_price|date_format:Y-m-d',
+            'special_price_type'=>'required_with:special_price|in:fixed,percent',
+            'special_price_start'=>'date|required_with:special_price|date_format:Y-m-d',
+            'special_price_end'=>'data|required_with:special_price|date_format:Y-m-d|after:special_price_start',
 
+            //stock validation
             'sku'=>'nullable|min:3|max:12',
             'manage_stock'=>'required|in:0,1',
             'qty'=>'required_if:manage_stock,==,1',
+            'status'=>'required|in:0,1',
+
+            //images validation
+            'documents' =>'required|array|min:1',
+            'documents.*'=>'required|string'
         ];
     }
 }

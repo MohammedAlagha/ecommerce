@@ -44,7 +44,9 @@
                                 <div class="card-text">
                                     <p>املأ الفورم لاضافة منتج</p>
                                 </div>
-                                <form class="form form-horizontal" >
+                                <form class="form form-horizontal" action="{{route('admin.products.store')}}"
+                                      enctype="multipart/form-data" method="POST">
+                                    @csrf
                                     <div class="form-body">
                                         <h4 class="form-section"><i class="la la-eye"></i> المعلومات الأساسية</h4>
                                         <div class="row">
@@ -199,7 +201,11 @@
                                                         <span class="danger">*</span> </label>
                                                     <div class="col-md-9">
                                                         <input class="form-control border-primary" type="number"
+                                                               name="price"
                                                                placeholder="السعر" id="price">
+                                                        @error('price')
+                                                        <span class="danger">{{$message}}</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -210,6 +216,9 @@
                                                         <input type="date" name="special_price_start"
                                                                class="form-control border-primary"
                                                                id="special_price_start">
+                                                        @error('special_price_start')
+                                                        <span class="danger">{{$message}}</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -221,6 +230,9 @@
                                                             <option value="percent">percent</option>
                                                             <option value="fixed">fixed</option>
                                                         </select>
+                                                        @error('special_price_type')
+                                                        <span class="danger">{{$message}}</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
@@ -263,10 +275,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-md-3 label-control" for="price">كود المنتج
-                                                    <span class="danger">*</span> </label>
+                                                </label>
                                                 <div class="col-md-9">
-                                                    <input class="form-control border-primary" type="number"
-                                                           placeholder="السعر" id="price">
+                                                    <input class="form-control border-primary" type="text" name="sku"
+                                                           placeholder="sku" id="sku">
+                                                    @error('sku')
+                                                    <span class="danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -277,8 +292,8 @@
                                                 <div class="col-md-9">
                                                     <select class="custom-select form-control required"
                                                             id="status" name="status" required>
-                                                        <option value="0">متاح</option>
-                                                        <option value="1">غير متاح</option>
+                                                        <option value="1">متاح</option>
+                                                        <option value="0">غير متاح</option>
                                                     </select>
                                                     @error('status')
                                                     <span class="danger">{{$message}}</span>
@@ -1033,31 +1048,43 @@
             url: "{{ route('admin.products.images.store') }}", // Set the url
             success:
                 function (file, response) {
-                    $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
+                    $('form').append('<input type="hidden" name="documents[]" value="' + response.name + '">')
                     uploadedDocumentMap[file.name] = response.name
                 }
             ,
-            removedfile: function (file) {
+            removedfile: function (file) {    // another problem:: remove uploaded images from folder when close the form
+                //////////////////////////////// ajax to delete photo from folder//////////////////
                 file.previewElement.remove()
                 var name = ''
                 if (typeof file.file_name !== 'undefined') {
-                    name = file.file_name
+                     name = file.file_name
                 } else {
-                    name = uploadedDocumentMap[file.name]
+                     name = uploadedDocumentMap[file.name]
                 }
-                $('form').find('input[name="document[]"][value="' + name + '"]').remove()
+
+                $('form').find('input[name="documents[]"][value="' + name + '"]').remove()
+
+                axios({
+                    method: 'POST',
+                    url:'{{route('admin.products.image.delete')}}',
+                    data:{
+                        name : name
+                    }
+                }).then(function ({data}) {
+                    console.log(data.status);
+                })
             }
             ,
             // previewsContainer: "#dpz-btn-select-files", // Define the container to display the previews
             init: function () {
-                    @if(isset($event) && $event->document)
+                    @if(isset($event) && $event->documents)
                 var files =
-                {!! json_encode($event->document) !!}
+                {!! json_encode($event->documents) !!}
                     for (var i in files) {
                     var file = files[i]
                     this.options.addedfile.call(this, file)
                     file.previewElement.classList.add('dz-complete')
-                    $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">')
+                    $('form').append('<input type="hidden" name="documents[]" value="' + file.file_name + '">')
                 }
                 @endif
             }

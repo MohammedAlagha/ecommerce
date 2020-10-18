@@ -61,8 +61,9 @@ Route::group([
 
             //images Routes
         Route::get('images/{id}','ProductsController@addImages')->name('admin.products.images');
-        Route::post('images/store','ProductsController@storeImages')->name('admin.products.images.store');
-        Route::post('images/store_in_db','ProductsController@storeImagesInDB')->name('admin.products.images.store.db');
+        Route::post('images/store','ProductsController@storeImages')->name('admin.products.images.store'); //store in folder only
+        Route::post('image/delete','ProductsController@deleteImageFromFolder')->name('admin.products.image.delete');  //delete from folder only
+//        Route::post('images/store_in_db','ProductsController@storeImagesInDB')->name('admin.products.images.store.db');
         #############################end Products routes############################################
     });
 
